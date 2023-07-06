@@ -22,8 +22,6 @@ public class FirstFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
     private String mParam2;
 
     public FirstFragment() {
@@ -52,7 +50,8 @@ public class FirstFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            // TODO: Rename and change types of parameters
+            String mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
@@ -63,9 +62,11 @@ public class FirstFragment extends Fragment {
         binding = FragmentFirstBinding.inflate(getLayoutInflater(),container, false);
         // Inflate the layout for this fragment
         binding.btnGo.setOnClickListener(view -> {
-            String url = binding.editTextWeb.getText().toString();
+            String URL = binding.editTextWeb.getText().toString();
 
-            getActivity().getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainerView, SecondFragment.newInstance(url, ""), "Second").commit();
+            getActivity().getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainerView,
+                    SecondFragment.newInstance(URL, ""),
+                    "Second").commit();
 
         });
         return binding.getRoot();

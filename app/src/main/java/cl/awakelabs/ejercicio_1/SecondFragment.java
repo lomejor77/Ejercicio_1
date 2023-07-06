@@ -3,6 +3,7 @@ package cl.awakelabs.ejercicio_1;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,8 +63,10 @@ public class SecondFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentSecondBinding.inflate(getLayoutInflater(),container, false);
         binding.btnExit.setOnClickListener(view -> {
-
+            FragmentManager btn = getActivity().getSupportFragmentManager();
+            btn.popBackStack();
         });
+        binding.webView.loadUrl(mParam1);
         // Inflate the layout for this fragment
         return binding.getRoot();
     }
